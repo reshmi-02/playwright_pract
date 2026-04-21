@@ -10,7 +10,7 @@ test('Dynamic dropdown', async ({page})=>{
 
    await page.keyboard.press("Enter");
 
-   await page.waitForTimeout(5000);
+   await page.waitForTimeout(8000);
 
    let options :Locator = page.locator("//form[@action='/search']/ul/li");
 
@@ -39,4 +39,23 @@ test('Dynamic dropdown', async ({page})=>{
     
 
    }
+})
+
+
+test('dynamic dropdown in orange hrm',async ({page})=>{
+
+    await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+
+    await page.waitForTimeout(8000);
+
+    await page.getByPlaceholder('Username').fill('Admin');
+
+    await page.getByPlaceholder('Password').fill('admin123');
+
+    await page.locator("button[type='submit']").click();
+
+    await page.waitForTimeout(3000);
+
+    await page.getByText('PIM').click();
+
 })

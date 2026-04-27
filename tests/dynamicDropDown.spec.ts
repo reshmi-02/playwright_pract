@@ -57,5 +57,26 @@ test('dynamic dropdown in orange hrm',async ({page})=>{
     await page.waitForTimeout(3000);
 
     await page.getByText('PIM').click();
+    await page.waitForTimeout(5000);
+
+  await  page.locator('.oxd-select-text-input').nth(2).click();
+
+  await page.waitForTimeout(3000);
+
+   let options : Locator = page.locator("div[role='option']");
+   console.log("Total  option : ", (await options.count()));
+   
+  console.log(await options.allTextContents());
+  
+  //select one option 
+  for(let i :number =0 ;i<await options.count();i++){
+
+  let text :string|null= await options.nth(i).textContent();
+  if(text=='QA Engineer'){
+    await options.nth(i).click();
+    break;
+  }
+
+  }
 
 })
